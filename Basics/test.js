@@ -1,0 +1,1 @@
+console.log('Hello G, This was created in git container!')
