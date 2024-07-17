@@ -2,9 +2,9 @@
 
 // mostly it is perfered that you compare same datatypes
 // also most languages dont allow this
-// console.log('2' == 1) // false
-// console.log('2' > 1) // true converts it to int than compares
-// console.log('2' < 1) // false
+console.log('2' == 1) // false
+console.log('2' > 1) // true converts it to int than compares
+console.log('2' < 1) // false
 
 // console.log( null == 0 ) // false
 // console.log( null > 0 ) // false

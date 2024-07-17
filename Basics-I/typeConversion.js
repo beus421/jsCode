@@ -18,9 +18,8 @@
 // console.log(typeof(scrInNum)); // number
 // console.log(scrInNum); // NaN(Not a number)
 
-// // Important thing to note is that JavaScript will convert the value wether its valid or not
-// // but once you output that value you'll realize the issue..
-
+// Important thing to note is that JavaScript will convert the value wether its valid or not
+// but once you output that value you'll realize the issue..
 
 // ******************************* Some weird Operations *******************************
 
