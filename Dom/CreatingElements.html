@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body style="background-color: #212121; color: aliceblue;">
+
+</body>
+<script>
+    // lets create an element using js
+
+    let a = document.createElement('div')
+    a.className = 'main'
+    a.id = Math.floor((Math.random() * 10) + 1)
+    a.setAttribute('title', 'generated Title')
+    a.style.backgroundColor = 'orange'
+    a.style.padding = '20px'
+    a.style.borderRadius = '10px'
+    a.style.display = 'flex'
+    a.style.justifyContent = 'center'
+
+    // lets give it a hover effect
+    a.addEventListener('mouseover', () => {
+        // Change the button's background color
+        a.style.backgroundColor = 'blue';
+    });
+    a.addEventListener('mouseout', () => {
+        // Change the button's background color
+        a.style.backgroundColor = 'orange';
+    });
+
+    // lets give it some text, 2 two perfered ways
+
+    // a.innerText = 'Created through js'
+
+    // or
+
+    const txtNode = document.createTextNode('Created through js')
+    // a.appendChild(txtNode)
+
+    // console.log(a);
+
+    // now lets put everything in a function
+    
+    // Now we have created a node but can't see it on the page hmmmm
+    // lets do something about that
+
+    // document.body.appendChild(a) 
+
+    function createEle(text = 'text') {
+        let a = document.createElement('div')
+        a.className = 'main'
+        a.id = Math.floor((Math.random() * 10) + 1)
+        a.setAttribute('title', 'generated Title')
+        a.style.backgroundColor = 'orange'
+        a.style.padding = '20px'
+        a.style.borderRadius = '10px'
+        a.style.display = 'flex'
+        a.style.justifyContent = 'center'
+        a.style.fontSize = '20px'
+        a.style.margin = '10px'
+        // lets give it a hover effect
+        a.addEventListener('mouseover', () => {
+            // Change the button's background color
+            a.style.backgroundColor = 'blue';
+        });
+        a.addEventListener('mouseout', () => {
+            // Change the button's background color
+            a.style.backgroundColor = 'orange';
+        });
+        a.innerText = `${text}`
+        // const txtNode = document.createTextNode('Created through js')
+        // a.appendChild(txtNode)
+
+        document.body.appendChild(a)
+
+        console.log(a);
+
+    }
+
+    // WORKS!!!
+    // createEle('ali')
+
+    // Now lets wrap it in a loop
+
+    for (let i = 0; i < 5; i++) {
+        createEle(`this is block: ${i+1}`)    
+    }
+
+</script>
+
+</html>
