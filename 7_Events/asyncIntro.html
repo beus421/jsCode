@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Async Tutorial</title>
+</head>
+<body style="background-color: #212121; color: rgb(255, 195, 127);">
+    <h1>LETS LEARN ASYNC</h1>
+    <button type="button" id="stop">STOP!</button>
+</body>
+<script>
+
+// setTimeOut() & setInterval() is not part of core javascript
+// its part of the web api meaning you can find it window prototype in the browser
+
+
+// ************ setTimeOut() ************
+
+// do something after this many secounds
+
+// console.log('Print Now')
+
+// setTimeout(()=>{
+// console.log('Print after 5000ms or 5s')
+// }, 2000)
+
+
+// ************ clearTimeOut() ************
+
+// stops a particuler setTimeOut()
+// you should use it in some sort of a context such as event or when a particuler function/condition runs
+
+// console.log('Print Now')
+
+// const sto = setTimeout(()=>{
+// console.log('Print after 5000ms or 5s')
+// }, 2000)
+
+// Now if you press stop button before 'sto' wont run
+// document.getElementById('stop').addEventListener('click',()=>{
+//     clearTimeout(sto)
+//     console.log('STOPPED');
+// })
+
+
+// ************ setInterval() ************ 
+
+// keep doing somthing after a certin interval
+
+// console.log('DO THIS NOW AND ONLY ONCE')
+
+// setInterval(() => {
+//     console.log('Keeps printing after every 2000ms')
+// }, 2000);
+
+
+// ************ clearInterval() ************ 
+
+// console.log('DO THIS NOW AND ONLY ONCE')
+
+// const si = setInterval(() => {
+//     console.log('Keeps printing after every 2000ms')
+// }, 2000);
+
+// Now if you press stop button, 'si' will stop running
+
+// document.getElementById('stop').addEventListener('click',()=>{
+//     clearTimeout(si)
+//     console.log('STOPPED');
+// })
+
+</script>
+</html>

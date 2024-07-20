@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>html Events </title>
+</head>
+
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div>
+        <ul id="images">
+            <li><img width="500px" id="black"
+                    src="https://images.pexels.com/photos/1341279/pexels-photo-1341279.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt="photoshop"></li>
+            <li><img width="500px" id="blue"
+                    src="https://images.pexels.com/photos/355465/pexels-photo-355465.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""></li>
+            <li><img width="500px" id="green"
+                    src="https://images.pexels.com/photos/1142950/pexels-photo-1142950.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""></li>
+            <li><img width="500px" id="light"
+                    src="https://images.pexels.com/photos/1421903/pexels-photo-1421903.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""></li>
+            <li><img width="500px" id="crab"
+                    src="https://images.pexels.com/photos/3805983/pexels-photo-3805983.jpeg?auto=compress&cs=tinysrgb&w=600"
+                    alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+    </div>
+</body>
+<script>
+
+    // imp things to study
+    // type, timestamp, defaultPrevented
+    // target, toElement, srcElement, currentTarget,
+    // clientX, clientY, screenX, screenY
+    // altkey, ctrlkey, shiftkey, keyCode
+
+    // in pure 'javascript' avoid 'oncick' attribute in html, causes problem during scaling
+    // do the following 2 approches instead,
+
+    // document.getElementById('light').onclick = function(){ alert('light clicked')}  // will work
+    // document.getElementById('light').onclick(function(){ alert('light clicked')}) // wont work
+    // document.getElementById('light').onclick(() => { alert('light clicked')}) // wont work
+
+    // and the best approch,
+    // document.getElementById('light').addEventListener('click', ()=>{ alert('light clicked again')})
+
+    // event object
+    // document.getElementById('light').addEventListener('click', (e) => { console.log(e); })
+
+
+    // let look at event propogation
+    // it composes of 'event bubbling' & 'event capturing'
+    // we'll learn both through an example
+
+    // if you click the parent shouldnt the child event also start since its a part of the parent?
+
+    // document.getElementById('images').addEventListener('click', () => { console.log('parent clicked') })
+    // document.getElementById('light').addEventListener('click', () => { console.log('child clicked') })
+
+    // you will get the following result,
+    /*
+    child clicked
+    parent clicked 
+    */
+
+    // this is known as 'bubbling'
+    // just like bubbles the events moves from bottom to top or child to parent
+
+
+    // addEventListener() also takes a third argument(true,false)-> default is false
+    // if you set it to true 'bubbling' will stop
+
+    // document.getElementById('images').addEventListener('click', () => { console.log('parent clicked')}, true)
+    // document.getElementById('light').addEventListener('click', () => { console.log('child clicked') }, true)
+
+    // now we get,
+    /*
+    parent clicked
+    child clicked
+    */
+
+    // this is known as 'capturing'
+    // opposite of bubbles the events moves from top to bottom or parent to child
+
+    // you can also stop bubbling by using the event object, helps us keep events sperate 
+
+    //    document.getElementById('images').addEventListener('click', () => { console.log('parent clicked')})
+    //    document.getElementById('light').addEventListener('click', (e) => {
+    //      console.log('child clicked') 
+    //      e.stopPropagation()
+    //     })
+
+    // you can also stop capture as will
+
+    // document.getElementById('images').addEventListener('click', (e) => {
+    //     console.log('parent clicked')
+    //     e.stopPropagation()
+    // },true)
+    // document.getElementById('light').addEventListener('click', () => {
+    //     console.log('child clicked')
+    // },true)
+
+    // 
+
+    // preventing default behaviour using preventDefault()
+    // document.getElementById('google').addEventListener('click',(e)=>
+    // {
+    //     e.preventDefault()
+    //     console.log('default behaviour prevented')
+    // })
+
+    // practice project(sort of...)
+    // img disappear on single click and reappear on double click
+
+    let allImgs = document.querySelectorAll('li:has(img)')
+    console.log(allImgs)
+
+    allImgs.forEach((i)=>{
+        i.addEventListener('click',()=>{
+            i.firstChild.style.display = 'none'
+        })
+        i.addEventListener('dblclick',()=>{
+            i.firstChild.style.display = 'block'
+        })
+    })
+
+</script>
+
+</html>
