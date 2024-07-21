@@ -7,7 +7,7 @@
     <title>TEST</title>
     <style>
         .container {
-            margin-top: 200px;
+            margin-top: 100px;
             margin-bottom: 10px;
             display: flex;
             justify-content: center;
@@ -46,6 +46,20 @@
             text-align: center;
             border-radius: 5px;
         }
+
+        .content_1 {
+            background-color: rgb(255, 216, 238);
+            color: rgb(255, 255, 255);
+            font-size: xx-large;
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            margin-top: 5px;
+            margin-left: 10%;
+            margin-right: 10%;
+            padding-top: 50px;
+            padding-bottom: 50px;
+            text-align: center;
+            border-radius: 5px;
+        }
     </style>
 </head>
 
@@ -55,8 +69,56 @@
         <button type="button" class="stp_btn">STOP!</button>
     </div>
     <div class="content">0</div>
+    <div class="content_1"><span class="color_code"></span></div>
 </body>
 <script>
+
+    function codeGenerator(){
+
+        function valueAllocator(i){
+            i = Math.floor(Math.random() * 16)
+            switch (i) {
+                case 10:
+                    i = 'A'
+                    return i
+                    break;
+                case 11:
+                    i = 'B'
+                    return i
+                    break;
+                case 12:
+                    i = 'C'
+                    return i
+                    break;
+                case 13:
+                    i = 'D'
+                    return i
+                    break;
+                case 14:
+                    i = 'E'
+                    return i
+                    break;
+                case 15:
+                    i = 'F'
+                    return i
+                    break;
+            
+                default:
+                    return i
+                    break;
+            }
+        }
+        
+        let arr = [0,0,0,0,0,0]
+        let res = '#'
+        arr.forEach((val,ind)=>{
+
+            arr[ind] = valueAllocator(arr[ind])
+            res += String(arr[ind])
+
+        })
+        return res
+    }
 
     const start = document.querySelector('.str_btn')
     const stop = document.querySelector('.stp_btn')
@@ -68,12 +130,6 @@
         console.log('sec inc');
     }
 
-    // let startCount = setInterval(increaseSecound, 1000)
-    // let showSecound = setInterval(() => {
-    //     document.querySelector('.content').innerHTML = sec
-    //     console.log(sec)
-    // }, 1000)
-
     start.addEventListener('click', () => {
         let startCount = setInterval(increaseSecound, 1000)
         let showSecound = setInterval(() => {
@@ -81,15 +137,20 @@
             console.log(sec)
         }, 1000)
 
+        let changeColor = setInterval(() => {
+
+            document.querySelector('.content_1').style.backgroundColor = codeGenerator()
+            document.querySelector('.color_code').innerHTML = codeGenerator()
+        
+        }, 1000)
+
         stop.addEventListener('click', () => {
             clearInterval(startCount)
             clearInterval(showSecound)
+            clearInterval(changeColor)
             console.log('STOP PRESSED');
         })
     })
-
-
-    // function stopCount(){}
 
 </script>
 
