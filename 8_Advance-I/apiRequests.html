@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API REQUESTS</title>
+    <style>
+        .container {
+            margin-top: 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            border-radius: 50%;
+            width: 30%;
+            margin-bottom: 15px;
+        }
+
+        h2 {
+            font-family: monospace;
+            margin-top: 5px;
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+
+<body style="background-color: #212121; color:#8dda67;">
+
+    <div class="container">
+        <img src="#" alt="profile image">
+        <h2><span id="user_id">user id</span></h2>
+        <h2><span id="user_name">user name</span></h2>
+    </div>
+
+</body>
+<script>
+    // Old way before fetch
+
+    // lets use an api using AJAX(Asynchronous JavaScript and XML) related
+    // XMLHttpRequest
+
+    // create and XMLHttpRequest object and store it in a variable
+    const xhr = new XMLHttpRequest()
+    console.log(typeof xhr);
+
+    // readyState show states(numbers) that tells 
+    // your request you details about you request
+    // 0 -> no request sent
+    // 1 -> request sent or opened
+    // 2 -> Header recieved, or send has been called
+    // 3 -> loading content
+    // 4 -> done
+    console.log(xhr.readyState) // 0
+
+    // You tell open() what to do and from where(endpoint)
+    // remember open() needs send() to work
+    // const endpoint = 'https://api.github.com/users/beus421'
+    // xhr.open('GET', endpoint)
+
+    // console.log(xhr.readyState) // 1
+
+    // xhr.send()
+    // console.log(xhr.readyState) // 1 
+
+    // it seems the state is not changing?
+    // xhr.onreadystatechange
+
+    const endpoint = 'https://api.github.com/users/beus421'
+    xhr.open('GET', endpoint)
+
+    xhr.onreadystatechange = () => {
+        console.log(xhr.readyState) // now its changing
+
+        // lets check what we got before()
+        if (xhr.readyState === 4) {
+
+            // works!!!
+            console.log(xhr.responseText);
+
+            // now lets get account name
+            // yeah its not working cuz you got back a string
+            // and need to convert it to an object... jk into a json
+            // console.log(xhr.responseText.login);
+
+            const data = JSON.parse(xhr.responseText)
+            console.log(`user id: ${data.login}`);
+            console.log(`name: ${data.name}`);
+            console.log(`picture url: ${data.avatar_url}`);
+
+            // show the user and profile on your page
+
+            const id = data.login
+            console.log(`id: ${typeof data.login}`);
+            const name = data.name
+            const pic_url = data.avatar_url
+
+            document.querySelector('img').setAttribute('src', pic_url)
+            document.querySelector('#user_id').innerHTML = `ID: ${id}`
+            document.querySelector('#user_name').innerHTML = `Name: ${name}`
+        }
+    }
+
+    xhr.send()
+
+    // lets check what we got after send()
+    console.log(xhr.responseText); // doesnt seem to work?
+    // console.log(xhr.readyState) // 1 
+
+</script>
+
+</html>
