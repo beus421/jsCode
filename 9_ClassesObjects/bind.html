@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=!, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .btn{
+            padding: 20px;
+            background-color: orange;
+            color: rgb(210, 30, 156);
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body style="background-color: #212121; display: flex; justify-content: center;">
+    <button class="btn">
+        Click Me
+    </button>
+</body>
+<script>
+    class react{
+        constructor(){
+            this.server = 'http://localhost:3000'
+            this.somthing = 'something'
+
+            document.querySelector('.btn').addEventListener('click', this.click.bind(this))
+        }
+            
+        click(){
+            console.log('clicked');
+            // suppose you want to access server
+            console.log(this.server); // getting undefined
+            // whats inside "this" before using bind() 
+            // its actually the btn tag but you also want to keep the server as well that where we use bind() to to "bind" the this to the obj itself
+            console.log(this); 
+        }
+        
+    }
+
+    let app = new react()
+</script>
+</html>
