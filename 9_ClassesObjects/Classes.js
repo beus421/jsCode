@@ -39,3 +39,5 @@ class gamer extends user{
 let you = new gamer('Sam', 'sam@dfs.com', 123)
 you.print()
 you.uniqueId()
+
+// Keywords learned: class, extends, super, static
